@@ -8,16 +8,18 @@ function ProductItem({ id, name, description, price, image_url }) {
   const productCount = useSelector(store => store.cart[id])
 
   const addItem = () => dispatch(addToCart(id));
-  const removeItem = () => { if(productCount) dispatch(removeFromCart(id)) };
+  const removeItem = () => { if (productCount) dispatch(removeFromCart(id)) };
 
   return (
-    <div>
-      <h3>{name}</h3>
-      <div>{price}</div>
-      <div>{description}</div>
-      <img className="ProductItem-img" src={image_url} alt={name}/>
-      <button onClick={addItem}>Add to Cart</button>
-      <button onClick={removeItem} disabled={productCount ? false : true}>Remove from Cart</button>
+    <div className="ProductItem">
+      <img className="ProductItem-img" src={image_url} alt={name} />
+      <div className="ProductItem-container">
+        <h2>{name}</h2>
+        <div className="ProductItem-price">{price}</div>
+        <div className="ProductItem-description">{description}</div>
+        <button className="ProductItem-btn" onClick={addItem}>Add to Cart</button>
+        <button className="ProductItem-btn" onClick={removeItem} disabled={productCount ? false : true}>Remove from Cart</button>
+      </div>
     </div>
   )
 }

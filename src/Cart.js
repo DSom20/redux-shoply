@@ -7,10 +7,10 @@ function Cart() {
   const totalProducts = Object.values(cart).reduce((acc, val) => acc + val, 0);
 
   return (
-    <div>
+    <div className="Cart">
       <h2>The cart has {totalProducts} number of items</h2>
     </div>
-  )
+  );
 }
 
 export default Cart;
