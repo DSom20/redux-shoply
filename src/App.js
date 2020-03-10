@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import ProductList from './ProductList';
-import Cart from './Cart';
+import Routes from './Routes';
+import CartSummary from "./CartSummary";
 
 function App() {
   return (
     <div className="App">
-      <ProductList />
-      <Cart />
+      <Routes />
+      <CartSummary />
     </div>
   );
 }

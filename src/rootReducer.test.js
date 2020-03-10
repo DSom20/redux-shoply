@@ -28,7 +28,6 @@ describe("rootReducer", function () {
     const updatedState = {
       inventory: {...state1.inventory},
       cart: {[id]: 1}
-
     }
     expect(rootReducer(state1, action)).toEqual(updatedState);
   })
@@ -38,7 +37,6 @@ describe("rootReducer", function () {
     const updatedState = {
       inventory: {...state2.inventory},
       cart: {[id]: 1}
-
     }
     expect(rootReducer(state2, action)).toEqual(updatedState);
   })
@@ -48,7 +46,6 @@ describe("rootReducer", function () {
     const updatedState = {
       inventory: {...state3.inventory},
       cart: {}
-
     }
     expect(rootReducer(state3, action)).toEqual(updatedState);
   })
