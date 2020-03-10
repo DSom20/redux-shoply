@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from './actions';
 import { Link } from 'react-router-dom';
-// import './CartItem.css';
+import './CartItem.css';
 
 function CartItem({ count, name, id }) {
   const dispatch = useDispatch();
@@ -14,9 +14,10 @@ function CartItem({ count, name, id }) {
   return (
     <div className="CartItem">
       <div className="CartItem-container">
-        <h2><Link to={`/products/${name}`}>{name}</Link> Total: {count}</h2>
-        <button className="CartItem-btn" onClick={addItem}>+</button>
+        <h2><Link to={`/products/${name}`}>{name}</Link> </h2>
         <button className="CartItem-btn" onClick={removeItem} disabled={productCount ? false : true}>-</button>
+        <h3>{count}</h3>
+        <button className="CartItem-btn" onClick={addItem}>+</button>
       </div>
     </div>
   )

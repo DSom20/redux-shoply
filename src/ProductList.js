@@ -18,7 +18,7 @@ function ProductList() {
     );
 
   return (
-    <div>
+    <div className="ProductList">
       <h1>Product List</h1>
       {listJSX}
     </div>

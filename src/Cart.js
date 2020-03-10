@@ -8,7 +8,7 @@ function Cart() {
 
   const cartItems = Object
     .entries(inventory)
-    .filter(([productId, productInfo]) => productId in cart)
+    .filter(([productId, _]) => productId in cart)
     .map(([productId, productInfo]) => {
       return {
         id: productId,
