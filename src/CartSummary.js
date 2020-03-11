@@ -9,7 +9,7 @@ function CartSummary() {
 
   return (
     <div className="Cart">
-      <h2>The <Link to="/cart">cart</Link> has {totalProducts} number of items</h2>
+      <h2>The <Link to="/cart">cart</Link> has {totalProducts} items</h2>
       <Link to="/">Home!</Link>
     </div>
   );

@@ -1,10 +1,23 @@
 import React from 'react';
 import CartItem from './CartItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeDiscount } from './actions';
+import Form from './Form';
+
+
 
 function Cart() {
-  const cart = useSelector(store => store.cart);
-  const inventory = useSelector(store => store.inventory);
+  const { 
+    cart,
+    currentDiscountKey, 
+    availableDiscounts, 
+    inventory } = useSelector(store => store);
+
+  // const cart = useSelector(store => store.cart);
+  // const currentDiscountKey = useSelector(store => store.currentDiscountKey);
+  // const availableDiscounts = useSelector(store => store.availableDiscounts)
+  // const inventory = useSelector(store => store.inventory);
+  const dispatch = useDispatch();
 
   const cartItems = Object
     .entries(inventory)
@@ -29,11 +42,28 @@ function Cart() {
         count={entry.count}
       />
     );
+  
+  let totalPrice = cartItems.reduce((acc, product) => acc + (product.price * product.count), 0).toFixed(2);
+  if(currentDiscountKey) {
+    totalPrice *= 1 - availableDiscounts[currentDiscountKey];
+  }
+
+  const removeCoupon = () => dispatch(removeDiscount())
+
+  const coupon = (
+      <div>
+        <span>Current Coupon: {currentDiscountKey}</span>
+        <button onClick={removeCoupon}>X</button>
+      </div>
+    )
 
   return (
     <div>
       <h1>Cart</h1>
       {listJSX}
+      <div>Total Price: {totalPrice}</div>
+      {currentDiscountKey? coupon : null}
+      <Form />
     </div>
   )
 }
